@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.openpanel.svc.swupd.conf>
+  <system>
+    <eventlog>/var/opencore/log/swupd.event.log</eventlog>
+  </system>
+</com.openpanel.svc.swupd.conf>
