@@ -1,0 +1,11 @@
+Source: openpanel-swupd
+Section: misc
+Priority: optional
+Maintainer: OpenPanel/Panel6 packager <packages@panelsix.com>
+Build-Depends: debhelper (>= 5)
+Standards-Version: 3.7.2
+
+Package: openpanel-swupd
+Architecture: any
+Depends: , openpanel-core
+Description: swupd
