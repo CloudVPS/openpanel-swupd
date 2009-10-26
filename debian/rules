@@ -1,26 +1,24 @@
 #!/usr/bin/make -f
 
+build: build-stamp
+build-stamp:
+	./configure
+	make
+	touch build-stamp
 
-BUILD_ROOT=$(CURDIR)/debian/tmp
-install:
-trm -rf ${BUILD_ROOT}
-tmkdir -p ${BUILD_ROOT}/var/opencore
-tmkdir -p ${BUILD_ROOT}/var/opencore/bin
-tinstall -m 750 -d ${BUILD_ROOT}/var/opencore/log
-tinstall -m 755 -d ${BUILD_ROOT}/var/opencore/sockets
-tinstall -m 700 -d ${BUILD_ROOT}/var/opencore/sockets/swupd
-tcp -rf swupd.app ${BUILD_ROOT}/var/opencore/bin/
-tinstall -m 755 swupd ${BUILD_ROOT}/var/opencore/bin/swupd
-tmkdir -p ${BUILD_ROOT}/etc/init.d
-tinstall -m 755 contrib/debian.init ${BUILD_ROOT}/etc/init.d/openpanel-swupd
+install: install-stamp
+install-stamp: build-stamp
+	dh_testdir
+	dh_testroot
+	dh_installdirs
+	cp -rf swupd.app debian/openpanel-swupd/var/opencore/bin/
+	install -m 755 swupd debian/openpanel-swupd/var/opencore/bin/swupd
+	install -m 755 contrib/debian.init debian/openpanel-swupd/etc/init.d/openpanel-swupd
+	touch install-stamp
 
-build:
-t./configure
-tmake
-binary-indep:
+binary-indep: build install
 
-binary-arch binary: build install
-	if [ -d debian/tmp ] ; then dh_install -a --sourcedir=debian/tmp ; fi
+binary-arch: build install
 	dh_installdocs -a
 	dh_installdeb -a
 	dh_compress -a
@@ -29,5 +27,12 @@ binary-arch binary: build install
 	dh_gencontrol -a
 	dh_md5sums -a
 	dh_builddeb -a
+
+binary: binary-indep binary-arch
+
+clean:
+	rm -f build-stamp install-stamp
+	[ ! -f makeinclude ] || make clean
+	dh_clean
 
 .PHONY: build binary binary-arch binary-indep clean install

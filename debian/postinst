@@ -19,6 +19,9 @@ set -e
 
 case "$1" in
     configure)
+install -m 750 -d /var/opencore/log
+install -m 755 -d /var/opencore/sockets
+install -m 700 -d /var/opencore/sockets/swupd
 chown -R root:authd /var/opencore/sockets
 chmod -R 775 /var/opencore/sockets
 chmod 755 /var/opencore/tools
