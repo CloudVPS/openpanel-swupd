@@ -3,10 +3,10 @@ include makeinclude
 OBJ	= main.o source.o version.o
 
 all: swupd.exe
-	mkapp swupd
+	grace mkapp swupd
 
 version.cpp:
-	mkversion version.cpp
+	grace mkversion version.cpp
 
 swupd.exe: $(OBJ)
 	$(LD) $(LDFLAGS) -o swupd.exe $(OBJ) $(LIBS)
