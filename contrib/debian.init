@@ -1,29 +1,33 @@
 #! /bin/sh
-#
-#		Written by Miquel van Smoorenburg <miquels@cistron.nl>.
-#		Modified for Debian 
-#		by Ian Murdock <imurdock@gnu.ai.mit.edu>.
-#
-# Version:	@(#)openpanel 0.99 11-Nov-2006  danny@panelsix.com
-#
+
+### BEGIN INIT INFO
+# Provides:			opencore-swupd
+# Required-Start:	$remote_fs $syslog
+# Required-Stop:	$remote_fs $syslog
+# Default-Start:	2 3 4 5
+# Default-Stop:		1
+# Short-Description:	Opencore-swupd
+### END INIT INFO
+
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DAEMON=/var/opencore/bin/swupd
 LONGNAME=com.openpanel.svc.swupd
 NAME=openpanel-swupd
 DESC="Openpanel Software update daemon"
+PIDFILE="/var/run/$LONGNAME.pid"
 DAEMON_OPTS=
 
 test -x $DAEMON || exit 0
+
+. /lib/lsb/init-functions
 
 set -e
 
 case "$1" in
   start)
-    generate_pound_config
 	log_daemon_msg "Starting $DESC" $NAME
 	if start_daemon -p $PIDFILE $DAEMON $DAEMON_OPTS; then
-		#mv `ls -1tr /var/run/pound.pid | tail -1` $PIDFILE
 	    log_success_msg
 	else
 	    log_failure_msg
@@ -47,7 +51,6 @@ case "$1" in
 
 	killproc -p $PIDFILE $DAEMON
 
-    generate_pound_config
 	if start_daemon -p $PIDFILE $DAEMON $DAEMON_OPTS; then
 	    log_end_msg 0
 	else
