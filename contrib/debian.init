@@ -50,7 +50,16 @@ case "$1" in
 	log_daemon_msg "Restarting $DESC" $NAME
 
 	killproc -p $PIDFILE $DAEMON
-
+	
+	if pidofproc -p $PIDFILE $DAEMON > /dev/null; then
+		sleep 1
+	
+		while pidofproc -p $PIDFILE $DAEMON > /dev/null; do
+			log_action_msg "."
+			sleep 5
+		done
+	fi
+	
 	if start_daemon -p $PIDFILE $DAEMON $DAEMON_OPTS; then
 	    log_end_msg 0
 	else
