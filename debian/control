@@ -7,5 +7,5 @@ Standards-Version: 3.7.2
 
 Package: openpanel-swupd
 Architecture: any
-Depends: openpanel-core
+Depends: openpanel-core, ${shlibs:Depends}, ${misc:Depends}
 Description: OpenPanel module to manage software updated (update checker)
