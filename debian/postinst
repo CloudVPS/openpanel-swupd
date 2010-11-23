@@ -28,12 +28,12 @@ set -e
 
 case "$1" in
     configure)
-install -m 750 -d /var/opencore/log
-install -m 755 -d /var/opencore/sockets
-install -m 700 -d /var/opencore/sockets/swupd
-chown -R root:authd /var/opencore/sockets
-chmod -R 775 /var/opencore/sockets
-chmod 755 /var/opencore/tools
+install -m 750 -d /var/openpanel/log
+install -m 755 -d /var/openpanel/sockets
+install -m 700 -d /var/openpanel/sockets/swupd
+chown -R root:authd /var/openpanel/sockets
+chmod -R 775 /var/openpanel/sockets
+chmod 755 /var/openpanel/tools
 update-rc.d openpanel-swupd start 72 2 3 4 5 . stop 72 0 1 6 . > /dev/null
 invoke-rc.d openpanel-swupd restart
 

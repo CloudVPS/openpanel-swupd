@@ -12,9 +12,9 @@
 #include <grace/daemon.h>
 #include <grace/configdb.h>
 
-#define PATH_CACHEFILE "/var/opencore/db/softwareupdate.db"
-#define PATH_LISTFILE "/var/opencore/db/updatelist.db"
-#define PATH_SOCKET "/var/opencore/sockets/swupd/swupd.sock"
+#define PATH_CACHEFILE "/var/openpanel/db/softwareupdate.db"
+#define PATH_LISTFILE "/var/openpanel/db/updatelist.db"
+#define PATH_SOCKET "/var/openpanel/sockets/swupd/swupd.sock"
 
 extern bool SHUTDOWN_REQUESTED;
 

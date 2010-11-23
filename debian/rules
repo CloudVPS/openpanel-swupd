@@ -20,8 +20,8 @@ install-stamp: build-stamp
 	dh_testdir
 	dh_testroot
 	dh_installdirs
-	cp -rf swupd.app debian/openpanel-swupd/var/opencore/bin/
-	install -m 755 swupd debian/openpanel-swupd/var/opencore/bin/swupd
+	cp -rf swupd.app debian/openpanel-swupd/var/openpanel/bin/
+	install -m 755 swupd debian/openpanel-swupd/var/openpanel/bin/swupd
 	install -m 755 contrib/debian.init debian/openpanel-swupd/etc/init.d/openpanel-swupd
 	touch install-stamp
 

@@ -20,7 +20,7 @@
 
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/var/opencore/bin/swupd
+DAEMON=/var/openpanel/bin/swupd
 LONGNAME=com.openpanel.svc.swupd
 NAME=openpanel-swupd
 DESC="Openpanel Software update daemon"

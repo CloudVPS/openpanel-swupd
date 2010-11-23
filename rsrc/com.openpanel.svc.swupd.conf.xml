@@ -11,6 +11,6 @@
 -->
 <com.openpanel.svc.swupd.conf>
   <system>
-    <eventlog>/var/opencore/log/swupd.event.log</eventlog>
+    <eventlog>/var/openpanel/log/swupd.event.log</eventlog>
   </system>
 </com.openpanel.svc.swupd.conf>

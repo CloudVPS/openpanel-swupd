@@ -38,20 +38,20 @@ make
 %install
 BUILD_ROOT=$RPM_BUILD_ROOT
 rm -rf ${BUILD_ROOT}
-mkdir -p ${BUILD_ROOT}/var/opencore
-mkdir -p ${BUILD_ROOT}/var/opencore/bin
-install -m 750 -d ${BUILD_ROOT}/var/opencore/log
-install -m 755 -d ${BUILD_ROOT}/var/opencore/sockets
-install -m 700 -d ${BUILD_ROOT}/var/opencore/sockets/swupd
-cp -rf swupd.app ${BUILD_ROOT}/var/opencore/bin/
-install -m 755 swupd ${BUILD_ROOT}/var/opencore/bin/swupd
+mkdir -p ${BUILD_ROOT}/var/openpanel
+mkdir -p ${BUILD_ROOT}/var/openpanel/bin
+install -m 750 -d ${BUILD_ROOT}/var/openpanel/log
+install -m 755 -d ${BUILD_ROOT}/var/openpanel/sockets
+install -m 700 -d ${BUILD_ROOT}/var/openpanel/sockets/swupd
+cp -rf swupd.app ${BUILD_ROOT}/var/openpanel/bin/
+install -m 755 swupd ${BUILD_ROOT}/var/openpanel/bin/swupd
 mkdir -p ${BUILD_ROOT}/etc/rc.d/init.d
 install -m 755 contrib/redhat.init ${BUILD_ROOT}/etc/rc.d/init.d/openpanel-swupd
 
 %post
-chown -R root:authd /var/opencore/sockets
-chmod -R 775 /var/opencore/sockets
-chmod 755 /var/opencore/tools
+chown -R root:authd /var/openpanel/sockets
+chmod -R 775 /var/openpanel/sockets
+chmod 755 /var/openpanel/tools
 chkconfig --level 2345 openpanel-swupd on
 
 %files

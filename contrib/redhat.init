@@ -31,7 +31,7 @@ prog="swupd"
 # Check that networking is up.
 [ "${NETWORKING}" = "no" ] && exit 1
 
-DAEMON=/var/opencore/bin/swupd
+DAEMON=/var/openpanel/bin/swupd
 NAME=com.openpanel.svc.swupd
 
 # Check if executable exists
