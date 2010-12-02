@@ -125,7 +125,7 @@ int swupdApp::main (void)
 						list.loadshox (PATH_LISTFILE);
 						
 						value cache;
-						cache.laodshox (PATH_CACHEFILE);
+						cache.loadshox (PATH_CACHEFILE);
 						
 						foreach (cnode, cache)
 						{
