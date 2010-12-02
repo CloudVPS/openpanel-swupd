@@ -366,6 +366,7 @@ void aptsource::update (const value &list)
 	while (! aptp.eof())
 	{
 		string line = aptp.gets();
+		log::write (log::info, "update", "apt: %s" %format (line));
 	}
 	
 	aptp.serialize();
