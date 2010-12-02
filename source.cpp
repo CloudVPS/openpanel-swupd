@@ -355,9 +355,13 @@ void aptsource::update (const value &list)
 	outargs.newval() = "-y";
 	outargs.newval() = "--force-yes";
 	outargs.newval() = "install";
+	
+	bool selfupdate = false;
+	
 	foreach (update, list)
 	{
-		outargs.newval() = update;
+		if (update == "openpanel-swupd") selfupdate = true;
+		else outargs.newval() = update;
 	}
 	
 	systemprocess aptp (outargs, true);
@@ -370,6 +374,12 @@ void aptsource::update (const value &list)
 	}
 	
 	aptp.serialize();
+	
+	if (selfupdate)
+	{
+		core.sh ("/usr/bin/nohup /usr/bin/apt-get -y --force-yes install "
+				 "openpanel-swupd >/dev/null 2>&1 </dev/null &"
+	}
 }
 
 // ==========================================================================
