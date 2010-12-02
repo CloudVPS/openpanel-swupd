@@ -124,6 +124,17 @@ int swupdApp::main (void)
 						value list;
 						list.loadshox (PATH_LISTFILE);
 						
+						value cache;
+						cache.laodshox (PATH_CACHEFILE);
+						
+						foreach (cnode, cache)
+						{
+							if (! list["flags"].exists (cnode.id()))
+							{
+								list["flags"][cnode.id()] = list["default"];
+							}
+						}
+						
 						// Create the event data
 						value outev;
 						outev["cmd"] = "update";
