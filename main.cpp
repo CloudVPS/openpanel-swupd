@@ -147,9 +147,9 @@ int swupdApp::main (void)
 								 "packages", cnt);
 								 
 							thr.sendevent (outev);
-							
+							outev = $("cmd","getupdates");
 							// Also send an update event.
-							thr.sendevent ($("cmd","getupdates"));
+							thr.sendevent (outev);
 						}
 						else
 						{
