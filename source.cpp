@@ -378,6 +378,8 @@ value *aptsource::getlist (void)
 {
 	returnclass (value) list retain;
 
+	core.sh ("/usr/bin/apt-get update");
+
 	value outargs;
 	int linecount = 0;
 	outargs.newval() = "/usr/bin/apt-get";
