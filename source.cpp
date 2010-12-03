@@ -377,6 +377,7 @@ void aptsource::update (const value &list)
 	
 	if (selfupdate)
 	{
+		log::write (log::info, "update", "Running self-update in background");
 		core.sh ("/usr/bin/nohup /usr/bin/apt-get -y --force-yes install "
 				 "openpanel-swupd >/dev/null 2>&1 </dev/null &");
 	}
