@@ -79,7 +79,7 @@ int swupdApp::main (void)
 	tcpsocket s;
 	updatethread thr (src, this);
 	
-	if (! fs.chgrp (PATH_SOCKET, "authd"))
+	if (! fs.chgrp (PATH_SOCKET, "openpanel-authd"))
 	{
 		log (log::critical, "main", "Error setting group on socket");
 		SHUTDOWN_REQUESTED = true;
