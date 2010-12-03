@@ -378,7 +378,7 @@ void aptsource::update (const value &list)
 	if (selfupdate)
 	{
 		core.sh ("/usr/bin/nohup /usr/bin/apt-get -y --force-yes install "
-				 "openpanel-swupd >/dev/null 2>&1 </dev/null &"
+				 "openpanel-swupd >/dev/null 2>&1 </dev/null &");
 	}
 }
 
