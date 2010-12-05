@@ -86,8 +86,7 @@ int swupdApp::main (void)
 	}
 	if (! fs.chmod (PATH_SOCKET, 0660))
 	{
-		log (log::critical, "main", "Error setting permissions on "
-			 "socket");
+		log (log::critical, "main", "Error setting permissions on socket");
 		SHUTDOWN_REQUESTED = true;
 	}
 	
