@@ -387,7 +387,7 @@ void aptsource::update (const value &list)
 		for (int i=0; i<30; ++i)
 		{
 			if (! SHUTDOWN_REQUESTED) sleep (1);
-			else break;
+			else exit (0);
 		}
 	}
 }
