@@ -10,6 +10,8 @@
 #include "swupd.h"
 #include <grace/process.h>
 
+extern bool SHUTDOWN_REQUESTED;
+
 // ==========================================================================
 // CONSTRUCTOR updatesource
 // ==========================================================================
@@ -378,9 +380,15 @@ void aptsource::update (const value &list)
 	if (selfupdate)
 	{
 		log::write (log::info, "update", "Running self-update in background");
-		core.sh ("/usr/bin/nohup /usr/bin/apt-get -y --force-yes install "
+		core.sh ("/usr/bin/apt-get -y --force-yes install "
 				 "openpanel-swupd >/var/openpanel/log/swupd.selfupdate.log "
 				 "2>&1 </dev/null &");
+		
+		for (int i=0; i<30; ++i)
+		{
+			if (! SHUTDOWN_REQUESTED) sleep (1);
+			else break;
+		}
 	}
 }
 
