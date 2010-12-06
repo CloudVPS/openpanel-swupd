@@ -143,6 +143,7 @@ int swupdApp::main (void)
 						{
 							if (update == true)
 							{
+								if (! cache.exists (update.id())) continue;
 								outev["list"].newval() = update.id();
 							}
 						}
