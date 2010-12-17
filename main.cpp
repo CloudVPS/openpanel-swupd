@@ -123,6 +123,10 @@ int swupdApp::main (void)
 						value list;
 						list.loadshox (PATH_LISTFILE);
 						
+						// If no selection is written, assume default update
+						// policy.
+						if (! list.exists ("default")) list["default"] = true;
+						
 						value cache;
 						cache.loadshox (PATH_CACHEFILE);
 						
