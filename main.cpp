@@ -125,7 +125,13 @@ int swupdApp::main (void)
 						
 						// If no selection is written, assume default update
 						// policy.
-						if (! list.exists ("default")) list["default"] = true;
+						if (! list.exists ("default"))
+						{
+							log::write (log::info, "main", "Default update "
+										"policy has not been set, assuming "
+										"update-all policy.");
+							list["default"] = true;
+						}
 						
 						value cache;
 						cache.loadshox (PATH_CACHEFILE);
@@ -170,7 +176,8 @@ int swupdApp::main (void)
 						{
 							// No, whine
 							log (log::info, "main", "Update requested with "
-								 "no selected updates");
+								 "no selected updates and a default policy "
+								 "that updates none");
 						}
 						
 						// Send OK result (if the bastard didn't hang up)
