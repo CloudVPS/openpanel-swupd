@@ -27,6 +27,11 @@ DESC="Openpanel Software update daemon"
 PIDFILE="/var/run/$LONGNAME.pid"
 DAEMON_OPTS=
 
+
+if [ -f /etc/default/openpanel-swupd ] ; then
+	. /etc/default/openpanel-swupd
+fi
+
 test -x $DAEMON || exit 0
 
 . /lib/lsb/init-functions

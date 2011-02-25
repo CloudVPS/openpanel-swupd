@@ -28,7 +28,6 @@ clean:
 install:
 	cp -rf swupd.app ${DESTDIR}/var/openpanel/bin/
 	install -m 755 swupd ${DESTDIR}/var/openpanel/bin/swupd
-	install -m 755 contrib/debian.init ${DESTDIR}/etc/init.d/openpanel-swupd
 
 SUFFIXES: .cpp .o
 .cpp.o:
