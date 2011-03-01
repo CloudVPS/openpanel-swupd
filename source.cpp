@@ -405,7 +405,7 @@ value *aptsource::getlist (void)
 	int linecount = 0;
 	outargs.newval() = "/usr/bin/apt-get";
 	outargs.newval() = "-s";
-	outargs.newval() = "upgrade";
+	outargs.newval() = "dist-upgrade";
 	
 	systemprocess aptp (outargs, true);
 	aptp.run ();
